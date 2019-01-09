@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -35,6 +36,24 @@ public class CustomerServiceTest {
 
         assertThat(customersList).isNotEmpty();
         verify(customerRepository).findAll();
+    }
+
+    @Test
+    public void createCustomer() {
+        Customer expectedCustomer= new Customer("Sergio","Gonzalez");
+        Customer customerDomain = new Customer("Sergio","Gonzalez");
+        CustomerEntity customerEntity = new CustomerEntity("Sergio", "Gonozalez");
+
+        CustomerService customerService = new CustomerService(customerRepository,customerMapper);
+
+        when(customerMapper.retrieveEntity(customerDomain)).thenReturn(customerEntity);
+        when(customerRepository.save(any(CustomerEntity.class))).thenReturn(customerEntity);
+        when(customerMapper.retrieveDomain(any(CustomerEntity.class))).thenReturn(customerDomain);
+
+        Customer customer = customerService.createCustomer(customerDomain);
+
+        assertThat(expectedCustomer.getName()).contains(customer.getName());
+
     }
 
     private List<CustomerEntity> getCustomersEntity() {

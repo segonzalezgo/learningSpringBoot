@@ -9,4 +9,12 @@ public class CustomerMapper {
     public List<Customer> map(Iterable<CustomerEntity> customerEntities) {
         return null;
     }
+
+    public CustomerEntity retrieveEntity(Customer customerDomain) {
+        return null;
+    }
+
+    public Customer retrieveDomain(CustomerEntity customerEntity) {
+        return null;
+    }
 }

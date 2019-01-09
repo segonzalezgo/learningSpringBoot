@@ -22,4 +22,10 @@ public class CustomerService {
 
         return customerMapper.map(customerEntities);
     }
+
+    public Customer createCustomer(Customer customerDomain) {
+        CustomerEntity customerEntity = customerMapper.retrieveEntity(customerDomain);
+        CustomerEntity savedCustomer = customerRepository.save(customerEntity);
+        return customerMapper.retrieveDomain(savedCustomer);
+    }
 }
