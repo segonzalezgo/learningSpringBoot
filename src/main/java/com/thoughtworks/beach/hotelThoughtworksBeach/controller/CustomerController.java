@@ -2,7 +2,6 @@ package com.thoughtworks.beach.hotelThoughtworksBeach.controller;
 
 import com.thoughtworks.beach.hotelThoughtworksBeach.domain.Customer;
 import com.thoughtworks.beach.hotelThoughtworksBeach.service.CustomerService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
