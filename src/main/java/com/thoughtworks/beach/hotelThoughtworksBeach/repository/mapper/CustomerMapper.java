@@ -18,11 +18,12 @@ public class CustomerMapper {
         return customers;
     }
 
-    public CustomerEntity retrieveEntity(Customer customerDomain) {
+    public CustomerEntity convertToEntity(Customer customerDomain) {
         return null;
     }
 
-    public Customer retrieveDomain(CustomerEntity customerEntity) {
-        return null;
+    public Customer convertToDomain(CustomerEntity customerEntity) {
+
+        return new Customer(customerEntity.getFirstName(), customerEntity.getLastName());
     }
 }

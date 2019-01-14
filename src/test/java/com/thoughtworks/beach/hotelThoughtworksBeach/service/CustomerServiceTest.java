@@ -46,9 +46,9 @@ public class CustomerServiceTest {
 
         CustomerService customerService = new CustomerService(customerRepository,customerMapper);
 
-        when(customerMapper.retrieveEntity(customerDomain)).thenReturn(customerEntity);
+        when(customerMapper.convertToEntity(customerDomain)).thenReturn(customerEntity);
         when(customerRepository.save(any(CustomerEntity.class))).thenReturn(customerEntity);
-        when(customerMapper.retrieveDomain(any(CustomerEntity.class))).thenReturn(customerDomain);
+        when(customerMapper.convertToDomain(any(CustomerEntity.class))).thenReturn(customerDomain);
 
         Customer customer = customerService.createCustomer(customerDomain);
 

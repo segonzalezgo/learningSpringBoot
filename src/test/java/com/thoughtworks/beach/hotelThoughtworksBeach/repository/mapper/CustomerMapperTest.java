@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CustomerMapperTest {
 
     @Test
-    public void retrieveDomains() {
+    public void retrievesDomains() {
         CustomerMapper customerMapper = new CustomerMapper();
         Iterable<CustomerEntity> customerEntities = getCustomersEntity();
 
@@ -21,6 +21,17 @@ public class CustomerMapperTest {
 
         assertThat(customers).isNotEmpty();
         assertThat(customers.get(0).getName()).isEqualTo("Sergio");
+    }
+
+    @Test
+    public void convertsCustomerEntityIntoCustomerDomain() {
+        CustomerEntity customerEntity = new CustomerEntity("Victoria", "Fuenmayor");
+        CustomerMapper customerMapper = new CustomerMapper();
+
+        Customer customer = customerMapper.convertToDomain(customerEntity);
+
+        assertThat(customer.getName()).isEqualTo("Victoria");
+        assertThat(customer.getLastName()).isEqualTo("Fuenmayor");
     }
 
     private Iterable<CustomerEntity> getCustomersEntity() {

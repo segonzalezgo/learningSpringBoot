@@ -24,8 +24,8 @@ public class CustomerService {
     }
 
     public Customer createCustomer(Customer customerDomain) {
-        CustomerEntity customerEntity = customerMapper.retrieveEntity(customerDomain);
+        CustomerEntity customerEntity = customerMapper.convertToEntity(customerDomain);
         CustomerEntity savedCustomer = customerRepository.save(customerEntity);
-        return customerMapper.retrieveDomain(savedCustomer);
+        return customerMapper.convertToDomain(savedCustomer);
     }
 }
