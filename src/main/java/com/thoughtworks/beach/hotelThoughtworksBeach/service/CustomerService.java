@@ -20,7 +20,7 @@ public class CustomerService {
 
         Iterable<CustomerEntity> customerEntities = customerRepository.findAll();
 
-        return customerMapper.map(customerEntities);
+        return customerMapper.retrieveDomains(customerEntities);
     }
 
     public Customer createCustomer(Customer customerDomain) {

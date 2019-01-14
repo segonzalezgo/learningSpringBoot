@@ -36,4 +36,12 @@ public class CustomerEntity implements Serializable {
     public String toString() {
         return String.format("CustomerEntity[id=%d, firstName='%s', lastName='%s']", id, firstName, lastName);
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
 }

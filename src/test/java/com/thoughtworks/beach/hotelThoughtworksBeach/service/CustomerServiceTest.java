@@ -30,7 +30,7 @@ public class CustomerServiceTest {
         CustomerService customerService = new CustomerService(customerRepository, customerMapper);
         List<CustomerEntity> customerEntities = getCustomersEntity();
         when(customerRepository.findAll()).thenReturn(customerEntities);
-        when(customerMapper.map(customerEntities)).thenReturn(getCustomers());
+        when(customerMapper.retrieveDomains(customerEntities)).thenReturn(getCustomers());
 
         List<Customer> customersList = customerService.retrieveAllCustomers();
 
