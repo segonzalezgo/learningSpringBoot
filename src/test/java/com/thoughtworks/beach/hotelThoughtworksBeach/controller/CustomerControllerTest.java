@@ -30,6 +30,19 @@ public class CustomerControllerTest {
         verify(customerService, times(1)).retrieveAllCustomers();
     }
 
+    @Test
+    public void callsCreateCustomer() {
+        CustomerController customerController = new CustomerController(customerService);
+        Customer customerInformation = new Customer("Gaspar", "Loco");
+
+        when(customerService.createCustomer(any(Customer.class))).thenReturn(customerInformation);
+
+        Customer customer = customerController.createCustomer(customerInformation);
+
+        assertThat(customer).isNotNull();
+        verify(customerService, times(1)).createCustomer(customer);
+    }
+
     private List<Customer> getCustomers() {
         return Collections.singletonList(new Customer());
     }
