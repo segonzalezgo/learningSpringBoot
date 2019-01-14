@@ -24,6 +24,17 @@ public class CustomerMapperTest {
     }
 
     @Test
+    public void convertsCustomerDomainToCustomerEntity() {
+        Customer customer = new Customer("Victoria", "Fuenmayor");
+        CustomerMapper customerMapper = new CustomerMapper();
+
+        CustomerEntity customerEntity = customerMapper.convertToEntity(customer);
+
+        assertThat(customerEntity.getFirstName()).isEqualTo("Victoria");
+        assertThat(customerEntity.getLastName()).isEqualTo("Fuenmayor");
+    }
+
+    @Test
     public void convertsCustomerEntityIntoCustomerDomain() {
         CustomerEntity customerEntity = new CustomerEntity("Victoria", "Fuenmayor");
         CustomerMapper customerMapper = new CustomerMapper();

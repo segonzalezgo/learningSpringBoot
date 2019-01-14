@@ -21,8 +21,8 @@ public class CustomerController {
         return customerService.retrieveAllCustomers();
     }
 
-    public Customer createCustomer(Customer customerInformation) {
-
+    @PostMapping("/create")
+    public Customer createCustomer(@RequestBody Customer customerInformation) {
         return customerService.createCustomer(customerInformation);
     }
 }

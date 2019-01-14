@@ -21,7 +21,7 @@ public class CustomerMapper {
     }
 
     public CustomerEntity convertToEntity(Customer customerDomain) {
-        return null;
+        return new CustomerEntity(customerDomain.getName(), customerDomain.getLastName());
     }
 
     public Customer convertToDomain(CustomerEntity customerEntity) {
