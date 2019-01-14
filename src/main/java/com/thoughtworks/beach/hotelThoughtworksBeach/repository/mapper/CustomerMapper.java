@@ -2,10 +2,12 @@ package com.thoughtworks.beach.hotelThoughtworksBeach.repository.mapper;
 
 import com.thoughtworks.beach.hotelThoughtworksBeach.domain.Customer;
 import com.thoughtworks.beach.hotelThoughtworksBeach.repository.model.CustomerEntity;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CustomerMapper {
     public List<Customer> retrieveDomains(Iterable<CustomerEntity> customerEntities) {
 

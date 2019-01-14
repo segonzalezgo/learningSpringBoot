@@ -4,9 +4,11 @@ import com.thoughtworks.beach.hotelThoughtworksBeach.domain.Customer;
 import com.thoughtworks.beach.hotelThoughtworksBeach.repository.CustomerRepository;
 import com.thoughtworks.beach.hotelThoughtworksBeach.repository.mapper.CustomerMapper;
 import com.thoughtworks.beach.hotelThoughtworksBeach.repository.model.CustomerEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CustomerService {
     private CustomerRepository customerRepository;
     private CustomerMapper customerMapper;
