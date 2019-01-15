@@ -2,21 +2,16 @@ package com.thoughtworks.beach.hotelThoughtworksBeach.repository.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "customer")
 public class CustomerEntity implements Serializable {
 
     private static final long serialVersionUID = -3009157732242241606L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Integer rut;
 
     @Column(name = "firstname")
     private String firstName;
@@ -27,14 +22,15 @@ public class CustomerEntity implements Serializable {
     public CustomerEntity() {
     }
 
-    public CustomerEntity(String firstName, String lastName) {
+    public CustomerEntity(Integer rut, String firstName, String lastName) {
+        this.rut = rut;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
     @Override
     public String toString() {
-        return String.format("CustomerEntity[id=%d, firstName='%s', lastName='%s']", id, firstName, lastName);
+        return String.format("CustomerEntity[rut=%d, firstName='%s', lastName='%s']", rut, firstName, lastName);
     }
 
     public String getFirstName() {
@@ -43,5 +39,9 @@ public class CustomerEntity implements Serializable {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public Integer getRut() {
+        return rut;
     }
 }

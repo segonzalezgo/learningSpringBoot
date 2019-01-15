@@ -14,18 +14,18 @@ public class CustomerMapper {
         List<Customer> customers = new ArrayList<>();
 
         for (CustomerEntity customerEntity : customerEntities) {
-            Customer customer = new Customer(customerEntity.getFirstName(), customerEntity.getLastName());
+            Customer customer = new Customer(customerEntity.getRut(), customerEntity.getFirstName(), customerEntity.getLastName());
             customers.add(customer);
         }
         return customers;
     }
 
     public CustomerEntity convertToEntity(Customer customerDomain) {
-        return new CustomerEntity(customerDomain.getName(), customerDomain.getLastName());
+        return new CustomerEntity(customerDomain.getRut(),customerDomain.getName(), customerDomain.getLastName());
     }
 
     public Customer convertToDomain(CustomerEntity customerEntity) {
 
-        return new Customer(customerEntity.getFirstName(), customerEntity.getLastName());
+        return new Customer(customerEntity.getRut(),customerEntity.getFirstName(), customerEntity.getLastName());
     }
 }

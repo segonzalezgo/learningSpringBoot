@@ -14,6 +14,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
@@ -39,27 +41,27 @@ public class CustomerIntegrationTest {
     @Test
     @Transactional
     public void returnsCustomerWhenGetAllCustomersIsTriggered() throws Exception {
-        String expectedJson = "[{\"name\":\"vicky\",\"lastName\":\"la reina\"}]";
-        CustomerEntity customerEntity = new CustomerEntity("vicky", "la reina");
+        String expectedJson = "[{\"rut\":18007550,\"name\":\"vicky\",\"lastName\":\"la reina\"}]";
+        CustomerEntity customerEntity = new CustomerEntity(18007550,"vicky", "la reina");
 
         customerRepository.save(customerEntity);
 
         mockMvc.perform(get("/customers/all"))
                 .andDo(print())
-                .andExpect(content().json(expectedJson));
+                .andExpect(content().json(expectedJson, true));
     }
 
     @Test
     @Transactional
     public void returnsCustomerWhenCreatingCustomer() throws Exception {
-        String customerInformation  = "{\"name\":\"vicky\",\"lastName\":\"la reina\"}";
+        String customerInformation  = "{\"rut\":18007550,\"name\":\"vicky\",\"lastName\":\"la reina\"}";
 
-        String expectedJson = "{\"name\":\"vicky\",\"lastName\":\"la reina\"}";
+        String expectedJson = "{\"rut\":18007550,\"name\":\"vicky\",\"lastName\":\"la reina\"}";
 
         mockMvc.perform(post("/customers/create")
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(customerInformation))
-                .andExpect(content().json(expectedJson));
+                .andExpect(content().json(expectedJson, true));
     }
 
 }

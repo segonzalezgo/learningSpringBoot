@@ -1,13 +1,15 @@
 package com.thoughtworks.beach.hotelThoughtworksBeach.domain;
 
 public class Customer {
+    private Integer rut;
     private String name;
     private String lastName;
 
     public Customer() {
     }
 
-    public Customer(String name, String lastName) {
+    public Customer(Integer rut, String name, String lastName) {
+        this.rut = rut;
         this.name = name;
         this.lastName = lastName;
     }
@@ -16,15 +18,11 @@ public class Customer {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public Integer getRut() {
+        return rut;
     }
 }

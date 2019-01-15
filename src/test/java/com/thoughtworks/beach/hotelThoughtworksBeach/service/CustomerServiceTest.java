@@ -40,9 +40,9 @@ public class CustomerServiceTest {
 
     @Test
     public void createCustomer() {
-        Customer expectedCustomer= new Customer("Sergio","Gonzalez");
-        Customer customerDomain = new Customer("Sergio","Gonzalez");
-        CustomerEntity customerEntity = new CustomerEntity("Sergio", "Gonozalez");
+        Customer expectedCustomer= new Customer(18007550,"Sergio","Gonzalez");
+        Customer customerDomain = new Customer(18007550,"Sergio","Gonzalez");
+        CustomerEntity customerEntity = new CustomerEntity(18007550,"Sergio", "Gonozalez");
 
         CustomerService customerService = new CustomerService(customerRepository,customerMapper);
 
@@ -57,10 +57,10 @@ public class CustomerServiceTest {
     }
 
     private List<CustomerEntity> getCustomersEntity() {
-        return Collections.singletonList(new CustomerEntity("Sergio","Gonzalez"));
+        return Collections.singletonList(new CustomerEntity(18007550,"Sergio","Gonzalez"));
     }
     private List<Customer> getCustomers() {
-        return Collections.singletonList(new Customer("Sergio","Gonzalez"));
+        return Collections.singletonList(new Customer(18007550,"Sergio","Gonzalez"));
     }
 
 }

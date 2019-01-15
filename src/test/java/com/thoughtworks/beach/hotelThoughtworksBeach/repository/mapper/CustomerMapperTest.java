@@ -25,7 +25,7 @@ public class CustomerMapperTest {
 
     @Test
     public void convertsCustomerDomainToCustomerEntity() {
-        Customer customer = new Customer("Victoria", "Fuenmayor");
+        Customer customer = new Customer(18007550,"Victoria", "Fuenmayor");
         CustomerMapper customerMapper = new CustomerMapper();
 
         CustomerEntity customerEntity = customerMapper.convertToEntity(customer);
@@ -36,7 +36,7 @@ public class CustomerMapperTest {
 
     @Test
     public void convertsCustomerEntityIntoCustomerDomain() {
-        CustomerEntity customerEntity = new CustomerEntity("Victoria", "Fuenmayor");
+        CustomerEntity customerEntity = new CustomerEntity(18007550, "Victoria", "Fuenmayor");
         CustomerMapper customerMapper = new CustomerMapper();
 
         Customer customer = customerMapper.convertToDomain(customerEntity);
@@ -46,6 +46,6 @@ public class CustomerMapperTest {
     }
 
     private Iterable<CustomerEntity> getCustomersEntity() {
-        return Collections.singletonList(new CustomerEntity("Sergio", "Gonzalez"));
+        return Collections.singletonList(new CustomerEntity(18007550,"Sergio", "Gonzalez"));
     }
 }

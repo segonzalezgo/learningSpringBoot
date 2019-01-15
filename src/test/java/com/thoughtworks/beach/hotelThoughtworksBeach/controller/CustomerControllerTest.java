@@ -33,13 +33,14 @@ public class CustomerControllerTest {
     @Test
     public void callsCreateCustomer() {
         CustomerController customerController = new CustomerController(customerService);
-        Customer customerInformation = new Customer("Gaspar", "Loco");
+        Customer customerInformation = new Customer(18007550,"Gaspar", "Loco");
 
         when(customerService.createCustomer(any(Customer.class))).thenReturn(customerInformation);
 
         Customer customer = customerController.createCustomer(customerInformation);
 
         assertThat(customer).isNotNull();
+        assertThat(customer.getRut()).isEqualTo(18007550);
         verify(customerService, times(1)).createCustomer(customer);
     }
 
