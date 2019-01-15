@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 
@@ -32,11 +33,16 @@ public class CustomerIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Test
-    @Ignore
-    public void returnsCustomerWhenGetAllCustomersIsTriggered() throws Exception {
+    @Autowired
+    private CustomerRepository customerRepository;
 
+    @Test
+    @Transactional
+    public void returnsCustomerWhenGetAllCustomersIsTriggered() throws Exception {
         String expectedJson = "[{\"name\":\"vicky\",\"lastName\":\"la reina\"}]";
+        CustomerEntity customerEntity = new CustomerEntity("vicky", "la reina");
+
+        customerRepository.save(customerEntity);
 
         mockMvc.perform(get("/customers/all"))
                 .andDo(print())
@@ -44,6 +50,7 @@ public class CustomerIntegrationTest {
     }
 
     @Test
+    @Transactional
     public void returnsCustomerWhenCreatingCustomer() throws Exception {
         String customerInformation  = "{\"name\":\"vicky\",\"lastName\":\"la reina\"}";
 
